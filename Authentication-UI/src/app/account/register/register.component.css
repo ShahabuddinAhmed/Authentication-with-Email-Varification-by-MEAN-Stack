@@ -1,0 +1,44 @@
+.signin-card{
+  width: 100%;
+  border-radius: 10px;
+}
+.card-basic-content{
+  padding: 50px;
+  text-align: center;
+  color: black;
+  /* background-color: blue; */
+
+}
+.example-form {
+  width: 100%;
+}
+
+.example-full-width {
+  font-size: 18px;
+  width: 100%;
+  margin: 4px 0px;
+}
+
+.form-button{
+
+  width: 100%;
+  font-size: 18px;
+  padding: 4px 0px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  border-radius: 20px;
+}
+
+.rounded {
+  border-radius: 25px !important;
+}
+button {
+  text-transform: none;
+  font-size: 16px;
+  color: white !important;
+  width: 100%;
+}
+
+h4 {
+  text-align: center;
+}

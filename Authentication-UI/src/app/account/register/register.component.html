@@ -1,0 +1,59 @@
+<div class="container">
+  <br>
+  <br>
+
+  <div class="row">
+    <div class="col-sm-6 offset-sm-3" style="padding: 0px;">
+      <mdb-card class="signin-card">
+        <!--Bacground color-->
+
+        <mdb-card-body class="card-basic-content">
+          <!--Name-->
+          <mdb-card-title>
+            <h4>Welcome to New User</h4>
+          </mdb-card-title>
+          <hr>
+          <form class="example-form" [formGroup]="Register" (ngSubmit)="onSubmit()" novalidate>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Name" [formControl]="name">
+              <mat-hint>Enter user name!</mat-hint>
+              <mat-error *ngIf="name.hasError('required')">Name fileld is required</mat-error>
+              <mat-error *ngIf="name.hasError('maxlength')">Name atmost 30 charactes long.</mat-error>
+              <mat-error *ngIf="name.hasError('minlength')">Name needs minimum 3 charactes</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Email" [formControl]="email">
+              <mat-hint>Enter user email!</mat-hint>
+              <mat-error *ngIf="email.hasError('required')">Email fileld is required</mat-error>
+              <mat-error *ngIf="email.hasError('maxlength')">Email atmost 60 charactes long.</mat-error>
+              <mat-error *ngIf="email.hasError('email') && !email.hasError('maxlength')"> Email is not valid!</mat-error>
+              <mat-error *ngIf="email.hasError('minlength') && !email.hasError('email')"> Email needs minimum 6 charactes</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Password" [formControl]="password" [type]="hide ? 'password' : 'text'">
+              <mat-icon style="font-size: 18px" matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+              <mat-hint>Enter user password!</mat-hint>
+              <mat-error *ngIf="password.hasError('required')"> Password field is required</mat-error>
+              <mat-error *ngIf="password.hasError('maxlength')">Password atmost 100 charactes long</mat-error>
+              <mat-error *ngIf="password.hasError('minlength')">Password needs minimum 6 charactes</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Confirm Password" [formControl]="confirmPassword" [type]="hide1 ? 'password' : 'text'">
+              <mat-icon style="font-size: 18px" matSuffix (click)="hide1 = !hide1">{{hide1 ? 'visibility' : 'visibility_off'}}</mat-icon>
+              <mat-hint>Confirm Password!</mat-hint>
+              <mat-error *ngIf="confirmPassword.hasError('required')">ConfirmPassword field is required</mat-error>
+              <mat-error *ngIf="confirmPassword.hasError('maxlength')">ConfirmPassword atmost 30 charactes long</mat-error>
+              <mat-error *ngIf="confirmPassword.hasError('minlength')">ConfirmPassword needs minimum 6 charactes</mat-error>
+            </mat-form-field>
+
+            <button [disabled]='!Register.valid' type="submit" mat-raised-button color="primary" class="form-button">SignUp</button>
+
+          </form>
+        </mdb-card-body>
+      </mdb-card>
+    </div>
+  </div>
+</div>
