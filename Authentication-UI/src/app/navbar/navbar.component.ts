@@ -1,3 +1,4 @@
+import { AuthService } from './../auth/auth.service';
 import { AccountService } from './../account/account.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -13,7 +14,11 @@ export class NavbarComponent implements OnInit {
   jwtHelper = new JwtHelperService();
   public userName: string;
 
-  constructor(private _accountService: AccountService, private router: Router) { }
+  constructor(
+    private _accountService: AccountService,
+    private router: Router,
+    public _authService: AuthService
+    ) { }
 
   ngOnInit() {
 
