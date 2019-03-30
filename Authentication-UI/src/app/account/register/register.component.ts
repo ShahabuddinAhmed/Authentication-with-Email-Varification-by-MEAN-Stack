@@ -1,3 +1,4 @@
+import { Error } from './../models/error';
 import { Router } from '@angular/router';
 import { AccountService } from './../account.service';
 import { Login } from './../models/login';
@@ -21,6 +22,7 @@ export class RegisterComponent implements OnInit {
   public confirmPassword: FormControl;
   register: Register;
   login: Login;
+  public error: Error;
 
   private createFormGroup(): void {
     this.Register = new  FormGroup( {
@@ -75,18 +77,11 @@ export class RegisterComponent implements OnInit {
     this._accountService.userRegister(this.register)
     .subscribe(data => {
       console.log(data);
-      this._accountService.userLogin(this.login)
-    .subscribe(loginData => {
-      console.log(loginData);
-      this._accountService.setToken(data);
-      this.router.navigate(['/home']);
+      this.router.navigate(['/login']);
     },
-    err => {
-      console.log(err);
-    });
-    },
-    err => {
-      console.log(err);
+    error => {
+      console.log(error);
+      this.error = error;
     });
   }
 }
