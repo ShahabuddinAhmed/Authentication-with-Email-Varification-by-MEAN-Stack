@@ -11,6 +11,10 @@
           <!--Name-->
           <mdb-card-title>
             <h4>Welcome to New User</h4>
+              <div *ngIf="error" class="alert alert-danger alert-dismissible">
+                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                  <strong>Worning!</strong> {{ error.error }}
+                </div>
           </mdb-card-title>
           <hr>
           <form class="example-form" [formGroup]="Register" (ngSubmit)="onSubmit()" novalidate>
