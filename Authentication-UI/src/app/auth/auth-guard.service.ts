@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { AuthService } from './auth.service';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,5 +7,14 @@ import { Injectable } from '@angular/core';
 })
 export class AuthGuardService {
 
-  constructor() { }
+  constructor(public auth: AuthService, public router: Router) { }
+
+  canActivate(): boolean {
+    if(!this.auth.isAuthenticated() || this.auth.isTokenExit() )
+    {
+      this.router.navigate(['/login']);
+      return false;
+    }
+    return true;
+  }
 }
