@@ -15,18 +15,17 @@
         <!-- Dropdown -->
       </ul>
       <ul class="navbar-nav mr-0">
-        <li class="nav-item dropdown" dropdown>
-          <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect ><span class="caret">getName</span></a>
+        <li *ngIf="_authService.isAuthenticated()" class="nav-item dropdown" dropdown>
+          <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect ><span class="caret">{{ getName() }}</span></a>
           <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-            <a class="dropdown-item waves-light" mdbWavesEffect routerLink="edit/1">Update Profile</a>
-            <a class="dropdown-item waves-light" mdbWavesEffect>Logout</a>
+            <a class="dropdown-item waves-light" mdbWavesEffect (click)="loggedOut()">Logout</a>
           </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link waves-light" mdbWavesEffect routerLink="login" routerLinkActive="active">Login</a>
+            <a *ngIf="!_authService.isAuthenticated()" class="nav-link waves-light" mdbWavesEffect routerLink="login" routerLinkActive="active">Login</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link waves-light" mdbWavesEffect routerLink="register" routerLinkActive="active">Register</a>
+            <a *ngIf="!_authService.isAuthenticated()" class="nav-link waves-light" mdbWavesEffect routerLink="register" routerLinkActive="active">Register</a>
         </li>
     </ul>
 
