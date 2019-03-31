@@ -1,0 +1,6 @@
+{
+  "env": {
+    "password": "House Renting",
+    "JWT_KEY": "secret"
+  }
+}
